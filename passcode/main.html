@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-cn">
 <head>
     <meta charset="utf-8">
     <title>浙江大学通行码</title>
@@ -10,142 +10,86 @@
 <script src="js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="js/jquery.qrcode.min.js?v=1"></script>
 
-
-<script>setTimeout("location=location; ", (24 * 3600 * 1000) * 3); </script>
 <script>
     jQuery(function () {
-
-        var colour = '1E90FF';
-        var flag = '';
-        if (null == colour || "" == colour) {
-            colour = "CCCCCC";
-        }
-
-
-        var mzt = '';
-        var dateTime = '';
-        var array = getJkm();
-        if (array.length > 0) {
-            mzt = array[0].mzt;
-            dateTime = array[0].dateTime;
-        }
-        if (mzt != 'green') {
-            colour = "CCCCCC";
-        }
-        if (mzt == 'green') {
-            $("#hzjkm").append('<div  class="hz" style="color: #55b957">健康码为 绿码</div>');
-        }
-        if (mzt == 'yellow') {
-            $("#hzjkm").append('<div  class="hz" style="color: #ee8232">健康码为 黄码</div>');
-        }
-        if (mzt == 'red') {
-            $("#hzjkm").append('<div class="hz" style="color: #e8453b">健康码为 红码</div>');
-        }
-
-        if (mzt == 'orange') {
-            $("#hzjkm").append('<div class="hz" style="color: #FFA500">健康码为 橙码</div>');
-        }
-        if (mzt == '') {
-            colour = "1E90FF";
-            $("#hzjkm").append('<div class="hz" style="color: #006bc7">健康码获取失败（请打开支付宝出示）</div>');
-        }
-        if (mzt == '' && flag == 'Invalid') {
-            colour = "CCCCCC";
-        }
-        if (dateTime != '') {
-            $("#dateTime").append('<div class="time">同步时间：' + dateTime + '</div>');
-        }
-
-        // 已删除
-        if ('' == '1') {
-            colour = 'CCCCCC';
-        }
-        // 核酸检测为是
-        if ('否' == '是') {
-            colour = 'EB6E18';
-        }
-
-        var account = '3180111656';
+        alert('点击申请流程切换姓名')
+        update_time();
         jQuery('#output').qrcode({
-            render: "table",
+            render: "canvas",
             width: 180,
             height: 180,
             text: 'jT6tmuodGqJ8BxagWnLHpZxliL72o9hFQUIhgyV7QgSIdTH2Hnnom0/HUOdO+OWkqgPztC2M0GA=',
-            render: "canvas", //也可以替换为table
-            foreground: "#" + colour,
+            foreground: "#1E90FF",
             background: "#FFF",
-
         });
     })
 
-    function getJkm() {
-        var datas = '';
-        $.ajax({
-            type: "GET",
-            url: "/pass_code/jkm?account=3180111656&cardNo=330105199909223113&identity=3",
-            async: false,
-            dataType: 'json',
-            success: function (data) {
-                datas = data;
-            }
-        });
-        return datas;
+    function update_time() {
+        let nowtime = new Date();
+        let year = nowtime.getFullYear();
+        let month = nowtime.getMonth() + 1;
+        let d = new Date(year, month, 0);
+        let days = d.getDate();
+        let day = nowtime.getDate();
+        let hour = nowtime.getHours();
+        let minutes = nowtime.getMinutes();
+        let seconds = nowtime.getSeconds();
+        $("#dateTime").append('<div class="time">同步时间：' + p(year) + '-' + p(month) + "-" + p(day) + ' ' + p(hour) + ":" + p(minutes) + ":" + p(seconds));
+        $("#valid").append('<div class="time">有效期：' + p(year) + '-' + p(month) + "-01 - " + p(year) + '-' + p(month) + "-" + p(days) + '</div>');
     }
 
-    if (true) {
-        //获取系统时间
-        function showTime() {
-            nowtime = new Date();
-            year = nowtime.getFullYear();//年
-            month = nowtime.getMonth() + 1;//月
-            day = nowtime.getDate();//日
-            hour = nowtime.getHours();//时
-            minutes = nowtime.getMinutes(); //分
-            seconds = nowtime.getSeconds(); //秒
-            //文字增加空格
-            document.getElementById("div_timer").style = "white-space:pre;";
-            //显示时间
-            document.getElementById("div_timer").innerText = p(month) + "月" + p(day) + "日 " + p(hour) + ":" + p(minutes) + ":" + p(seconds);
-        }
+    function showTime() {
+        let nowtime = new Date();
+        let month = nowtime.getMonth() + 1;
+        let day = nowtime.getDate();
+        let hour = nowtime.getHours();
+        let minutes = nowtime.getMinutes();
+        let seconds = nowtime.getSeconds();
+        document.getElementById("div_timer").innerText = p(month) + "月" + p(day) + "日 " + p(hour) + ":" + p(minutes) + ":" + p(seconds);
+    }
 
-        setInterval("showTime()", 1000);
+    setInterval("showTime()", 1000);
 
-        //月日时分秒小于10补0
-        function p(s) {
-            return s < 10 ? '0' + s : s;
-        }
+    function p(s) {
+        return s < 10 ? '0' + s : s;
+    }
+
+    function change_name() {
+        $('#name').html(window.prompt("你的名字") + '的通行码')
     }
 
 </script>
 
 
 <body class="blue-bg">
-<div class="banner"><img src="images/text.png"></div>
+<div class="banner"><img src="images/text.png" alt=""></div>
 
 
 <div class="content-box">
     <div class="top-title">
-        <h3>周芃旸的通行码</h3>
+        <h3 id="name">胖胖的通行码</h3>
         <span class="bgr-blue">本科生</span>
     </div>
     <strong>
-        <div class="time2" id="div_timer"></div>
+        <div class="time2" id="div_timer" style="white-space:pre"></div>
     </strong>
     <div class="qr">
         <div id="output" style="margin-top: 10px;margin-bottom: 10px"></div>
     </div>
-    <div class="time">有效期：2021-02-27 - 2021-06-30</div>
-    <div id="hzjkm"></div>
+    <div class="time" id='valid'></div>
+    <div id="hzjkm">
+        <div class="hz" style="color: #55b957">健康码为 绿码</div>
+    </div>
     <div style="text-align: center;">
-        <button style="background: rgb(91,145,201);border: 0px;height: 30px;width: 200px;border-radius: 5px;"><a
-                style="text-decoration: none" href="/pass_code/zx/vaccination" target="_blank"><span
+        <button style="background: rgb(91,145,201);border: 0;height: 30px;width: 200px;border-radius: 5px;"><a
+                style="text-decoration: none" target="_blank"><span
                 style="color: white;">查询新冠疫苗接种记录</span></a></button>
     </div>
     <div id="dateTime"></div>
     <p class="tip" style="margin-top: 10px;">凭蓝码可在浙江大学校园内通行<br>请主动出示，配合检查</p>
     <div style="text-align:center; margin-top: 10px">
-        <a target="_blank" href="/pass_code/zsq">申请流程</a>&nbsp;&nbsp;&nbsp;
-        <a target="_blank" href="/pass_code/zx/getList">申请记录</a>
+        <a target="_blank" href="" onclick="change_name();return false;">申请流程</a>&nbsp;&nbsp;&nbsp;
+        <a target="_blank" href="">申请记录</a>
     </div>
 </div>
 <div class="bottom-tip">
