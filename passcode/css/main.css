@@ -19,7 +19,7 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 }
 
 ol, ul, li {
-    padding-left: 0;
+    padding-left: 0em;
     list-style: none
 }
 
@@ -46,10 +46,10 @@ html, body {
     background-size: 100% auto;
 }
 
-/*.orange-bg {*/
-/*    background: url(../images/orange-bg.png) no-repeat left top;*/
-/*    background-size: 100% auto;*/
-/*}*/
+/* .orange-bg {
+    background: url(../images/orange-bg.png) no-repeat left top;
+    background-size: 100% auto;
+} */
 
 .top-header {
     line-height: 44px;
@@ -74,7 +74,7 @@ html, body {
 
 .content-box {
     width: 90%;
-    height: 510px;
+    height: 500px;
     border-radius: 10px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
     background: #fff;
@@ -147,6 +147,10 @@ html, body {
 .bottom-tip {
     width: 80%;
     margin: 30px auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .bottom-tip h3 {
@@ -174,12 +178,11 @@ html, body {
 .bgr-blue {
     background: #028aff;
     font-size: 18px;
-    border-radius: 20%;
     padding: 3px;
     color: white;
 }
 
-.bgr-orange {
+.bgr-oranige {
     background: #EB6E18;
     font-size: 18px;
     border-radius: 20%;

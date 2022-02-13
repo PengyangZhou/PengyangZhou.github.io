@@ -34,7 +34,6 @@
         let hour = nowtime.getHours();
         let minutes = nowtime.getMinutes();
         let seconds = nowtime.getSeconds();
-        $("#dateTime").append('<div class="time">同步时间：' + p(year) + '-' + p(month) + "-" + p(day) + ' ' + p(hour) + ":" + p(minutes) + ":" + p(seconds));
         $("#valid").append('<div class="time">有效期：' + p(year) + '-' + p(month) + "-01 - " + p(year) + '-' + p(month) + "-" + p(days) + '</div>');
     }
 
@@ -45,6 +44,7 @@
         let hour = nowtime.getHours();
         let minutes = nowtime.getMinutes();
         let seconds = nowtime.getSeconds();
+        document.getElementById("div_timer").style = "white-space:pre;";
         document.getElementById("div_timer").innerText = p(month) + "月" + p(day) + "日 " + p(hour) + ":" + p(minutes) + ":" + p(seconds);
     }
 
