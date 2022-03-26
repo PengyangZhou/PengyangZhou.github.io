@@ -58,6 +58,9 @@
         $('#name').html(window.prompt("你的名字") + '的通行码')
     }
 
+    function change_type() {
+        $('#type').html(window.prompt(""))
+    }
 </script>
 
 
@@ -68,7 +71,7 @@
 <div class="content-box">
     <div class="top-title">
         <h3 id="name">胖胖的通行码</h3>
-        <span class="bgr-blue">本科生</span>
+        <span class="bgr-blue" id="type" onclick="change_type();return false;">本科生</span>
     </div>
     <strong>
         <div class="time2" id="div_timer" style="white-space:pre"></div>
