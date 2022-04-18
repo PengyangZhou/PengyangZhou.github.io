@@ -37,14 +37,18 @@
         $("#valid").append('<div class="time">有效期：' + p(year) + '-' + p(month) + "-01 - " + p(year) + '-' + p(month) + "-" + p(days) + '</div>');
     }
 
+    //获取系统时间
     function showTime() {
-        let nowtime = new Date();
-        let month = nowtime.getMonth() + 1;
-        let day = nowtime.getDate();
-        let hour = nowtime.getHours();
-        let minutes = nowtime.getMinutes();
-        let seconds = nowtime.getSeconds();
-        document.getElementById("div_timer").style = "white-space:pre;";
+        nowtime = new Date();
+        year = nowtime.getFullYear();//年
+        month = nowtime.getMonth() + 1;//月
+        day = nowtime.getDate();//日
+        hour = nowtime.getHours();//时
+        minutes = nowtime.getMinutes(); //分
+        seconds = nowtime.getSeconds(); //秒
+        //文字增加空格
+        document.getElementById("div_timer");
+        //显示时间
         document.getElementById("div_timer").innerText = p(month) + "月" + p(day) + "日 " + p(hour) + ":" + p(minutes) + ":" + p(seconds);
     }
 
@@ -74,7 +78,7 @@
         <span class="bgr-blue" id="type" onclick="change_type();return false;">本科生</span>
     </div>
     <strong>
-        <div class="time2" id="div_timer" style="white-space:pre"></div>
+        <div class="time2" id="div_timer"></div>
     </strong>
     <div class="qr">
         <div id="output" style="margin-top: 10px;margin-bottom: 10px"></div>
