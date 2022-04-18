@@ -46,10 +46,10 @@ html, body {
     background-size: 100% auto;
 }
 
-/* .orange-bg {
+.orange-bg {
     background: url(../images/orange-bg.png) no-repeat left top;
     background-size: 100% auto;
-} */
+}
 
 .top-header {
     line-height: 44px;
@@ -74,7 +74,7 @@ html, body {
 
 .content-box {
     width: 90%;
-    height: 500px;
+    height: 600px;
     border-radius: 10px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
     background: #fff;
@@ -118,8 +118,8 @@ html, body {
     /*width:90%;*/
     margin: 5px;
     text-align: center;
-    line-height: 24px;
-    font-size: 1.3rem;
+    line-height: 48px;
+    font-size: 3rem;
     color: black;
     /*font-weight: bold;*/
 }
