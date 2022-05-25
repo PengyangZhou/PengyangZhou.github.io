@@ -59,14 +59,18 @@
             "                    <span style=\"color: white;font-size:25px\">" + "绿码" + "</span></a></button>");
     }
 
+    //获取系统时间
     function showTime() {
-        let now_time = new Date();
-        let month = now_time.getMonth() + 1;
-        let day = now_time.getDate();
-        let hour = now_time.getHours();
-        let minutes = now_time.getMinutes();
-        let seconds = now_time.getSeconds();
+        nowtime = new Date();
+        year = nowtime.getFullYear();//年
+        month = nowtime.getMonth() + 1;//月
+        day = nowtime.getDate();//日
+        hour = nowtime.getHours();//时
+        minutes = nowtime.getMinutes(); //分
+        seconds = nowtime.getSeconds(); //秒
+        //文字增加空格
         document.getElementById("div_timer");
+        //显示时间
         document.getElementById("div_timer").innerText = p(month) + "月" + p(day) + "日 " + p(hour) + ":" + p(minutes) + ":" + p(seconds);
     }
 
